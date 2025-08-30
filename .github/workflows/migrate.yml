@@ -1,4 +1,4 @@
-name: WooCommerce Migration
+name: WooCommerce Migration 0
 
 on:
   workflow_dispatch:   # manual trigger from GitHub Actions tab
