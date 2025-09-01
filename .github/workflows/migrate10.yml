@@ -1,0 +1,32 @@
+name: WooCommerce Migration 11
+
+on:
+  workflow_dispatch:   # manual trigger from GitHub Actions tab
+  # schedule:          # uncomment if you want to run on a schedule (daily at 2am UTC)
+  #   - cron: "0 2 * * *"
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run migration script
+        run: node migrate.js
+        env:
+          SOURCE_URL: ${{ secrets.SOURCE_URL }}
+          SOURCE_CONSUMER_KEY: ${{ secrets.SOURCE_CONSUMER_KEY }}
+          SOURCE_CONSUMER_SECRET: ${{ secrets.SOURCE_CONSUMER_SECRET }}
+          TARGET_URL: ${{ secrets.TARGET_URL }}
+          TARGET_CONSUMER_KEY: ${{ secrets.TARGET_CONSUMER_KEY }}
+          TARGET_CONSUMER_SECRET: ${{ secrets.TARGET_CONSUMER_SECRET }}
