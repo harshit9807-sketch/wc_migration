@@ -1,4 +1,4 @@
-name: WooCommerce Migration 12
+name: WooCommerce Migration 18
 
 on:
   workflow_dispatch:   # manual trigger from GitHub Actions tab
@@ -30,3 +30,4 @@ jobs:
           TARGET_URL: ${{ secrets.TARGET_URL }}
           TARGET_CONSUMER_KEY: ${{ secrets.TARGET_CONSUMER_KEY }}
           TARGET_CONSUMER_SECRET: ${{ secrets.TARGET_CONSUMER_SECRET }}
+
